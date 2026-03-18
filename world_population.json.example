@@ -1,0 +1,81 @@
+{
+  "metadata": {
+    "name": "public_world_population_example",
+    "description": "Template/example dataset for the runtime population pipeline used in the HoloOcean 2.2.2 spawner extract.",
+    "counts": {
+      "mine": 1,
+      "torpedo": 1,
+      "anchor": 1,
+      "rocks": 1,
+      "seaweed": 1,
+      "giant_seaweed": 1,
+      "coral": 1
+    },
+    "total_spawns": 7
+  },
+  "spawns": [
+    {
+      "category": "mine",
+      "label": "mine_public_001",
+      "mesh_asset": "/Game/mina.mina",
+      "location": [1800.0, -1600.0, -4700.0],
+      "rotation": [0.0, 0.0, 15.0],
+      "scale": [1.0, 1.0, 1.0],
+      "units": "ue"
+    },
+    {
+      "category": "torpedo",
+      "label": "torpedo_public_001",
+      "mesh_asset": "/Game/siluro.siluro",
+      "location": [3400.0, -800.0, -4500.0],
+      "rotation": [0.0, 0.0, 70.0],
+      "scale": [1.0, 1.0, 1.0],
+      "units": "ue"
+    },
+    {
+      "category": "anchor",
+      "label": "anchor_public_001",
+      "mesh_asset": "/Game/ancora.ancora",
+      "location": [900.0, 2100.0, -5000.0],
+      "rotation": [0.0, 0.0, -20.0],
+      "scale": [1.0, 1.0, 1.0],
+      "units": "ue"
+    },
+    {
+      "category": "rocks",
+      "label": "rock_public_001",
+      "mesh_asset": "/Game/Megascans/3D_Assets/Coral_Stone_wfcnbfdr/S_Coral_Stone_wfcnbfdr_lod3_Var1.S_Coral_Stone_wfcnbfdr_lod3_Var1",
+      "location": [0.0, 0.0, -7000.0],
+      "rotation": [0.0, 0.0, 0.0],
+      "scale": [1.0, 1.0, 1.0],
+      "units": "ue"
+    },
+    {
+      "category": "coral",
+      "label": "coral_public_001",
+      "mesh_asset": "/Game/Megascans/3D_Assets/Thai_Beach_Coral_ufvhbayga/S_Thai_Beach_Coral_ufvhbayga_lod3_Var1.S_Thai_Beach_Coral_ufvhbayga_lod3_Var1",
+      "location": [800.0, -1300.0, -7150.0],
+      "rotation": [0.0, 0.0, 35.0],
+      "scale": [1.0, 1.0, 1.0],
+      "units": "ue"
+    },
+    {
+      "category": "seaweed",
+      "label": "seaweed_public_001",
+      "mesh_asset": "/Game/Megascans/3D_Plants/Seaweed_sdpiF/S_Seaweed_sdpiF_Var1_lod1.S_Seaweed_sdpiF_Var1_lod1",
+      "location": [1500.0, 400.0, -7150.0],
+      "rotation": [0.0, 0.0, 10.0],
+      "scale": [1.0, 1.0, 1.0],
+      "units": "ue"
+    },
+    {
+      "category": "giant_seaweed",
+      "label": "giant_seaweed_public_001",
+      "mesh_asset": "/Game/Megascans/3D_Plants/Seaweed_sdpjN/S_Seaweed_sdpjN_Var7_lod1.S_Seaweed_sdpjN_Var7_lod1",
+      "location": [2300.0, 900.0, -7150.0],
+      "rotation": [0.0, 0.0, -15.0],
+      "scale": [1.0, 1.0, 1.0],
+      "units": "ue"
+    }
+  ]
+}
