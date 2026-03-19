@@ -13,9 +13,9 @@ C++ implementation:
 - `Source/Holodeck/ClientCommands/Public/RespawnFromConfigCommand.h`
 - `Source/Holodeck/Utils/Public/RuntimeRowSpawner.h`
 
-Example config:
+Runtime config:
 
-- `Content/Config/sonar_rows_runtime.json.example`
+- `Content/Config/sonar_rows_runtime.json`
 
 ## One-Time Unreal Setup
 
@@ -32,8 +32,7 @@ Example config:
 
 Notes:
 
-- The `.json` file is ignored by git. Create a local copy of the template:
-  `Content/Config/sonar_rows_runtime.json.example` -> `Content/Config/sonar_rows_runtime.json`
+- The runtime config used by `RespawnFromConfig` is `Content/Config/sonar_rows_runtime.json`.
 - Public-facing labels in this extract use English names such as `mine`, `torpedo`, and `anchor`.
 - The actual Unreal mesh package names remain unchanged as `/Game/mina.mina`, `/Game/siluro.siluro`, and `/Game/ancora.ancora` to avoid breaking binary asset references.
 

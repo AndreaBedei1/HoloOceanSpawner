@@ -73,7 +73,7 @@ The repository currently contains:
 
 - the public C++ files relevant to runtime spawning and sonar refresh;
 - the environment map and selected Unreal assets used for the public scene extract;
-- the public bulk population script, a tracked root-level example population dataset (`world_population.json.example`), and support for a root-level `world_population.json` override;
+- the public bulk population script plus the runtime JSON configuration files under `engine/Content/Config/`;
 - the original project `LICENSE`.
 
 ## Added Assets and Spawned Content
@@ -105,17 +105,15 @@ This variant also uses Megascans content to enrich sonar scenes:
   - `/Game/Megascans/3D_Plants/Seaweed_sdpjN/S_Seaweed_sdpjN_Var10_lod1.S_Seaweed_sdpjN_Var10_lod1`
   - additional seaweed families are present in `Seaweed_sdokF`, `Ocean_Seaweed_sdDgS`, and `Ocean_Seaweed_sdDkn`
 
-The tracked public repository includes:
+The repository ships the bulk population dataset at [`engine/Content/Config/world_population.json`](engine/Content/Config/world_population.json).
 
-- [`world_population.json.example`](world_population.json.example)
+[`main.py`](main.py) reads [`engine/Content/Config/world_population.json`](engine/Content/Config/world_population.json) by default and still accepts a legacy root-level [`world_population.json`](world_population.json) if present.
 
-The runtime population script first looks for a user-provided [`world_population.json`](world_population.json) next to [`main.py`](main.py) and falls back to the shipped example file if the user file is missing.
+The repository dataset contains `1533` runtime spawns:
 
-A larger local override dataset can therefore live alongside the example file without any code changes. The current workspace copy of [`world_population.json`](world_population.json) is a filtered working dataset with `1118` runtime spawns:
-
-- `87` mines (`mina`)
-- `67` torpedoes (`siluro`)
-- `71` anchors (`ancora`)
+- `240` mines (`mina`)
+- `200` torpedoes (`siluro`)
+- `200` anchors (`ancora`)
 - `332` rocks
 - `560` seaweed instances
 - `1` coral probe
@@ -206,11 +204,11 @@ If no parameters are provided, the spawner uses its own `ConfigPath` setting.
 
 ## Runtime JSON Format
 
-The reference row-based template is [`engine/Content/Config/sonar_rows_runtime.json.example`](engine/Content/Config/sonar_rows_runtime.json.example).
+The row-based runtime config used by `RuntimeRowSpawner` is [`engine/Content/Config/sonar_rows_runtime.json`](engine/Content/Config/sonar_rows_runtime.json).
 
-The public bulk population example is:
+The bulk population dataset used by [`main.py`](main.py) is:
 
-- [`world_population.json.example`](world_population.json.example)
+- [`engine/Content/Config/world_population.json`](engine/Content/Config/world_population.json)
 
 The row-based structure used by `RuntimeRowSpawner` is:
 
@@ -254,7 +252,7 @@ Important fields:
 - `rows.<name>.name_prefix` and `name_regex`: matching rules for existing actors;
 - `rows.<name>.destroy_extra`: per-row override of the global behavior.
 
-The bulk population example used by [`main.py`](main.py) has a separate schema:
+The bulk population dataset used by [`main.py`](main.py) has a separate schema:
 
 - top-level `metadata`
 - top-level `spawns`
@@ -264,10 +262,10 @@ The bulk population example used by [`main.py`](main.py) has a separate schema:
 
 [`main.py`](main.py) is the entry point for automatically populating the world from:
 
-- [`world_population.json`](world_population.json) placed next to `main.py`
-- or, if missing, [`world_population.json.example`](world_population.json.example)
+- [`engine/Content/Config/world_population.json`](engine/Content/Config/world_population.json)
+- or, for backward compatibility, [`world_population.json`](world_population.json) placed next to `main.py`
 
-When [`world_population.json`](world_population.json) is present, it overrides the example file. The current workspace dataset contains `1118` spawns and uses legacy aliases such as `mina`, `siluro`, and `ancora`, which [`main.py`](main.py) maps to the public categories `mine`, `torpedo`, and `anchor`.
+The repository dataset contains `1533` spawns and uses legacy aliases such as `mina`, `siluro`, and `ancora`, which [`main.py`](main.py) maps to the public categories `mine`, `torpedo`, and `anchor`.
 
 The script:
 
@@ -403,7 +401,7 @@ Recommended integration flow:
 3. rebuild the Unreal project;
 4. add a `RuntimeRowSpawner` actor to the target level if desired;
 5. configure `Config Path = Content/Config/sonar_rows_runtime.json`;
-6. use the provided templates to create local runtime or population JSON files;
+6. use the provided runtime or population JSON files as your starting point;
 7. run your Python workflow against the already running Unreal instance.
 
 The spawner can auto-create itself when commands are sent from Python, but placing the actor in the level is the better choice when you want a fixed `ConfigPath` and a repeatable iteration loop.
@@ -417,9 +415,8 @@ The spawner can auto-create itself when commands are sent from Python, but placi
 - [`engine/Content/Config/config.json`](engine/Content/Config/config.json)
 - [`engine/Content/Config/materials.csv`](engine/Content/Config/materials.csv)
 - [`engine/Content/Config/runtime_world_commands_README.md`](engine/Content/Config/runtime_world_commands_README.md)
-- [`engine/Content/Config/sonar_rows_runtime.json.example`](engine/Content/Config/sonar_rows_runtime.json.example)
-- [`world_population.json`](world_population.json)
-- [`world_population.json.example`](world_population.json.example)
+- [`engine/Content/Config/sonar_rows_runtime.json`](engine/Content/Config/sonar_rows_runtime.json)
+- [`engine/Content/Config/world_population.json`](engine/Content/Config/world_population.json)
 - [`engine/Source/Holodeck/Utils/Public/RuntimeRowSpawner.h`](engine/Source/Holodeck/Utils/Public/RuntimeRowSpawner.h)
 - [`engine/Source/Holodeck/Utils/Private/RuntimeRowSpawner.cpp`](engine/Source/Holodeck/Utils/Private/RuntimeRowSpawner.cpp)
 - [`engine/Source/Holodeck/ClientCommands/Private/SpawnAssetCommand.cpp`](engine/Source/Holodeck/ClientCommands/Private/SpawnAssetCommand.cpp)
