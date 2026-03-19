@@ -6,12 +6,12 @@
     "verbose_log": true
   },
   "rows": {
-    "mine": {
+    "mina": {
       "enabled": true,
       "mesh_asset": "/Game/mina.mina",
-      "name_prefix": "mine",
-      "name_regex": "^(mine|mina)[0-9]*$",
-      "folder": "Assets_Sonar/mine",
+      "name_prefix": "mina",
+      "name_regex": "^mina[0-9]*$",
+      "folder": "Assets_Sonar/mina",
       "target_count": 4,
       "positions": [],
       "rotations": [],
@@ -34,12 +34,12 @@
       "extra_scale_xyz": [1.0, 1.0, 1.0],
       "destroy_extra": false
     },
-    "torpedo": {
+    "siluro": {
       "enabled": true,
       "mesh_asset": "/Game/siluro.siluro",
-      "name_prefix": "torpedo",
-      "name_regex": "^(torpedo|siluro)[0-9]*$",
-      "folder": "Assets_Sonar/torpedo",
+      "name_prefix": "siluro",
+      "name_regex": "^siluro[0-9]*$",
+      "folder": "Assets_Sonar/siluro",
       "target_count": 4,
       "positions": [],
       "rotations": [],
@@ -62,12 +62,12 @@
       "extra_scale_xyz": [1.0, 1.0, 1.0],
       "destroy_extra": false
     },
-    "anchor": {
+    "ancora": {
       "enabled": true,
       "mesh_asset": "/Game/ancora.ancora",
-      "name_prefix": "anchor",
-      "name_regex": "^(anchor|ancora)[0-9]*$",
-      "folder": "Assets_Sonar/anchor",
+      "name_prefix": "ancora",
+      "name_regex": "^ancora[0-9]*$",
+      "folder": "Assets_Sonar/ancora",
       "target_count": 4,
       "positions": [],
       "rotations": [],
