@@ -73,7 +73,7 @@ The repository currently contains:
 
 - the public C++ files relevant to runtime spawning and sonar refresh;
 - the environment map and selected Unreal assets used for the public scene extract;
-- the public bulk population script and a root-level example population dataset (`world_population.json.example`);
+- the public bulk population script, a tracked root-level example population dataset (`world_population.json.example`), and support for a root-level `world_population.json` override;
 - the original project `LICENSE`.
 
 ## Added Assets and Spawned Content
@@ -105,22 +105,22 @@ This variant also uses Megascans content to enrich sonar scenes:
   - `/Game/Megascans/3D_Plants/Seaweed_sdpjN/S_Seaweed_sdpjN_Var10_lod1.S_Seaweed_sdpjN_Var10_lod1`
   - additional seaweed families are present in `Seaweed_sdokF`, `Ocean_Seaweed_sdDgS`, and `Ocean_Seaweed_sdDkn`
 
-The public repository includes:
+The tracked public repository includes:
 
 - [`world_population.json.example`](world_population.json.example)
 
 The runtime population script first looks for a user-provided [`world_population.json`](world_population.json) next to [`main.py`](main.py) and falls back to the shipped example file if the user file is missing.
 
-The internal development README for the private project referenced a larger research population dataset with `1533` runtime spawns:
+A larger local override dataset can therefore live alongside the example file without any code changes. The current workspace copy of [`world_population.json`](world_population.json) is a filtered working dataset with `1118` runtime spawns:
 
-- `240` mines
-- `200` torpedoes
-- `200` anchors
+- `87` mines (`mina`)
+- `67` torpedoes (`siluro`)
+- `71` anchors (`ancora`)
 - `332` rocks
 - `560` seaweed instances
 - `1` coral probe
 
-That exact large JSON file is **not present in this workspace snapshot**, so it is **not claimed as part of this public extract**. The public repository instead ships a smaller representative dataset that preserves the schema, asset categories, and spawning logic.
+[`main.py`](main.py) normalizes the legacy internal category aliases `mina`, `siluro`, and `ancora` to the public English labels `mine`, `torpedo`, and `anchor`, so both naming styles are accepted by the same spawn pipeline.
 
 ## Runtime Spawner Architecture
 
@@ -267,7 +267,7 @@ The bulk population example used by [`main.py`](main.py) has a separate schema:
 - [`world_population.json`](world_population.json) placed next to `main.py`
 - or, if missing, [`world_population.json.example`](world_population.json.example)
 
-The full research `world_population.json` is intentionally not shipped in this public extract. The expected workflow is to add your own root-level `world_population.json` locally when you want to run the larger population pass.
+When [`world_population.json`](world_population.json) is present, it overrides the example file. The current workspace dataset contains `1118` spawns and uses legacy aliases such as `mina`, `siluro`, and `ancora`, which [`main.py`](main.py) maps to the public categories `mine`, `torpedo`, and `anchor`.
 
 The script:
 
@@ -418,7 +418,7 @@ The spawner can auto-create itself when commands are sent from Python, but placi
 - [`engine/Content/Config/materials.csv`](engine/Content/Config/materials.csv)
 - [`engine/Content/Config/runtime_world_commands_README.md`](engine/Content/Config/runtime_world_commands_README.md)
 - [`engine/Content/Config/sonar_rows_runtime.json.example`](engine/Content/Config/sonar_rows_runtime.json.example)
-- [`world_population.json`](world_population.json) if you add your full dataset locally
+- [`world_population.json`](world_population.json)
 - [`world_population.json.example`](world_population.json.example)
 - [`engine/Source/Holodeck/Utils/Public/RuntimeRowSpawner.h`](engine/Source/Holodeck/Utils/Public/RuntimeRowSpawner.h)
 - [`engine/Source/Holodeck/Utils/Private/RuntimeRowSpawner.cpp`](engine/Source/Holodeck/Utils/Private/RuntimeRowSpawner.cpp)
