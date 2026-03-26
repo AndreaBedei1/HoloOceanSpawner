@@ -84,9 +84,8 @@ The clearest custom or explicitly used runtime assets in this repository are:
 - `torpedo`: `/Game/siluro.siluro`
 - `anchor`: `/Game/ancora.ancora`
 
-Public-facing names in this extract use English labels such as `mine`, `torpedo`, and `anchor`.
-The underlying Unreal package names remain `/Game/mina.mina`, `/Game/siluro.siluro`, and `/Game/ancora.ancora` because renaming `.uasset` packages safely would require Unreal-side asset renaming and redirector handling. Keeping the package names unchanged is the safest way to avoid broken binary references.
-If you later want the actual Unreal asset packages renamed as well, do that inside Unreal Editor and fix redirectors there. Do not rename the `.uasset` files manually in the filesystem.
+Throughout this README, the three target classes are denoted by the English labels `mine`, `torpedo`, and `anchor`.
+In the current extract, these labels correspond to the Unreal asset packages `/Game/mina.mina`, `/Game/siluro.siluro`, and `/Game/ancora.ancora`.
 
 This extract also ships two reusable seafloor asset pairs:
 
@@ -107,9 +106,8 @@ This extract also ships two reusable seafloor asset pairs:
   - Unreal asset path: `/Game/prova_fondo.prova_fondo`
   - role: Blueprint wrapper around `SM_UnderwaterSurface`
 
-The English names above are the recommended documentation names for these assets in this public extract.
-The binary Unreal package filenames remain unchanged on disk for safety, just as with `mina`, `siluro`, and `ancora`.
-If you want the package names themselves to match the English names, perform the rename inside Unreal Editor so redirectors and asset references are updated correctly.
+In the following, these seabed assets are referred to by the English identifiers above.
+Within the present extract, the corresponding packaged Unreal assets retain the filenames `underwater_terrain_70m`, `prova_fondo2`, `underwater_surface`, and `prova_fondo`.
 
 This variant also uses Megascans content to enrich sonar scenes:
 
@@ -141,7 +139,7 @@ The repository dataset contains `1533` runtime spawns:
 - `560` seaweed instances
 - `1` coral probe
 
-[`main.py`](main.py) normalizes the legacy internal category aliases `mina`, `siluro`, and `ancora` to the public English labels `mine`, `torpedo`, and `anchor`, so both naming styles are accepted by the same spawn pipeline.
+[`main.py`](main.py) accepts both the original category aliases `mina`, `siluro`, and `ancora` and the corresponding English labels `mine`, `torpedo`, and `anchor` when resolving runtime spawn categories.
 
 ## Runtime Spawner Architecture
 
