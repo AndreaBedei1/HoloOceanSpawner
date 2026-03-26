@@ -35,6 +35,13 @@ Notes:
 - The runtime config used by `RespawnFromConfig` is `Content/Config/sonar_rows_runtime.json`.
 - Public-facing labels in this extract use English names such as `mine`, `torpedo`, and `anchor`.
 - The actual Unreal mesh package names remain unchanged as `/Game/mina.mina`, `/Game/siluro.siluro`, and `/Game/ancora.ancora` to avoid breaking binary asset references.
+- This extract also includes two seafloor environment pairs:
+  - `SM_UnderwaterTerrain70m` -> current file `underwater_terrain_70m.uasset`
+  - `BP_UnderwaterTerrain70m` -> current file `prova_fondo2.uasset`, a Blueprint wrapper around `SM_UnderwaterTerrain70m`
+  - `SM_UnderwaterSurface` -> current file `underwater_surface.uasset`
+  - `BP_UnderwaterSurface` -> current file `prova_fondo.uasset`, a Blueprint wrapper around `SM_UnderwaterSurface`
+- For direct `SpawnAsset` usage, provide the static mesh asset path, not the Blueprint wrapper asset path.
+- The English names above are documentation names. Rename the underlying `.uasset` packages only inside Unreal Editor if you want the package names changed as well.
 
 ## Python Usage from HoloOcean
 

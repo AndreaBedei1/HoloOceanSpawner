@@ -88,6 +88,29 @@ Public-facing names in this extract use English labels such as `mine`, `torpedo`
 The underlying Unreal package names remain `/Game/mina.mina`, `/Game/siluro.siluro`, and `/Game/ancora.ancora` because renaming `.uasset` packages safely would require Unreal-side asset renaming and redirector handling. Keeping the package names unchanged is the safest way to avoid broken binary references.
 If you later want the actual Unreal asset packages renamed as well, do that inside Unreal Editor and fix redirectors there. Do not rename the `.uasset` files manually in the filesystem.
 
+This extract also ships two reusable seafloor asset pairs:
+
+- `SM_UnderwaterTerrain70m`
+  - current package file: `engine/Content/underwater_terrain_70m.uasset`
+  - Unreal asset path: `/Game/underwater_terrain_70m.underwater_terrain_70m`
+  - role: static mesh used as the terrain-style underwater seabed
+- `BP_UnderwaterTerrain70m`
+  - current package file: `engine/Content/prova_fondo2.uasset`
+  - Unreal asset path: `/Game/prova_fondo2.prova_fondo2`
+  - role: Blueprint wrapper around `SM_UnderwaterTerrain70m`
+- `SM_UnderwaterSurface`
+  - current package file: `engine/Content/underwater_surface.uasset`
+  - Unreal asset path: `/Game/underwater_surface.underwater_surface`
+  - role: static mesh used as the underwater surface base
+- `BP_UnderwaterSurface`
+  - current package file: `engine/Content/prova_fondo.uasset`
+  - Unreal asset path: `/Game/prova_fondo.prova_fondo`
+  - role: Blueprint wrapper around `SM_UnderwaterSurface`
+
+The English names above are the recommended documentation names for these assets in this public extract.
+The binary Unreal package filenames remain unchanged on disk for safety, just as with `mina`, `siluro`, and `ancora`.
+If you want the package names themselves to match the English names, perform the rename inside Unreal Editor so redirectors and asset references are updated correctly.
+
 This variant also uses Megascans content to enrich sonar scenes:
 
 - rock assets:
@@ -415,6 +438,7 @@ The spawner can auto-create itself when commands are sent from Python, but placi
 - [`engine/Content/Config/config.json`](engine/Content/Config/config.json)
 - [`engine/Content/Config/materials.csv`](engine/Content/Config/materials.csv)
 - [`engine/Content/Config/runtime_world_commands_README.md`](engine/Content/Config/runtime_world_commands_README.md)
+- [`engine/Content/Config/seafloor_assets_README.md`](engine/Content/Config/seafloor_assets_README.md)
 - [`engine/Content/Config/sonar_rows_runtime.json`](engine/Content/Config/sonar_rows_runtime.json)
 - [`engine/Content/Config/world_population.json`](engine/Content/Config/world_population.json)
 - [`engine/Source/Holodeck/Utils/Public/RuntimeRowSpawner.h`](engine/Source/Holodeck/Utils/Public/RuntimeRowSpawner.h)
